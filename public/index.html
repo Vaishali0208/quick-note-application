@@ -3,25 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quick Note Application</title>
-  <link rel="stylesheet" href="style.css">
+
+  <title>Quick Notes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
 
-  <div class="container">
-    <h1>📝 Quick Note Application</h1>
+  <div class="app-shell">
 
-    <input type="text" id="title" placeholder="Note title">
+    <!-- Sidebar -->
+    <aside class="sidebar">
 
-    <textarea id="content" placeholder="Write your note..."></textarea>
+      <div class="brand">
+        <div class="brand-icon">✦</div>
 
-    <button onclick="addNote()">Add Note</button>
+        <div>
+          <h1>Quick Notes</h1>
+          <span>Personal workspace</span>
+        </div>
+      </div>
 
-    <h2>My Notes</h2>
+      <nav class="sidebar-nav">
+        <div class="nav-item active">
+          <span>▣</span>
+          All Notes
+        </div>
 
-    <div id="notes"></div>
+        <div class="nav-item">
+          <span>☆</span>
+          Favorites
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-dot"></div>
+        <span>Your notes are ready</span>
+      </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Bar -->
+      <header class="topbar">
+
+        <div>
+          <p class="eyebrow">YOUR WORKSPACE</p>
+          <h2>Good ideas deserve a place.</h2>
+        </div>
+
+        <div class="profile">
+          <div class="profile-avatar">V</div>
+          <div>
+            <strong>My Notes</strong>
+            <span>Quick Note App</span>
+          </div>
+        </div>
+
+      </header>
+
+
+      <!-- Create Note -->
+      <section class="editor-card">
+
+        <div class="editor-header">
+          <div>
+            <span class="section-label">CREATE NOTE</span>
+            <h3>Capture something important</h3>
+          </div>
+
+          <span class="editor-badge">● Ready</span>
+        </div>
+
+        <input
+          type="text"
+          id="title"
+          placeholder="Give your note a title..."
+          autocomplete="off"
+        >
+
+        <textarea
+          id="content"
+          placeholder="Start writing your thoughts, ideas or reminders..."
+        ></textarea>
+
+        <div class="editor-footer">
+
+          <span class="hint">
+            ✦ Keep your thoughts organized
+          </span>
+
+          <button onclick="addNote()" class="add-button">
+            <span>＋</span>
+            Add Note
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- Notes Header -->
+      <section class="notes-header">
+
+        <div>
+          <span class="section-label">YOUR COLLECTION</span>
+          <h3>All Notes</h3>
+        </div>
+
+        <div class="notes-count">
+          Notes
+        </div>
+
+      </section>
+
+
+      <!-- Notes -->
+      <section id="notesContainer" class="notes-grid"></section>
+
+    </main>
+
   </div>
 
-  <script src="script.js"></script>
+
+  <script src="/script.js"></script>
+
 </body>
 </html>

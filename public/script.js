@@ -2,18 +2,19 @@ async function loadNotes() {
   const response = await fetch("/notes");
   const notes = await response.json();
 
-  const notesContainer = document.getElementById("notes");
+  const notesContainer = document.getElementById("notesContainer");
   notesContainer.innerHTML = "";
 
   notes.forEach(note => {
     const noteElement = document.createElement("div");
-    noteElement.className = "note";
+    noteElement.className = "note-card";
 
     noteElement.innerHTML = `
       <h3>${note.title}</h3>
       <p>${note.content}</p>
+
       <button class="delete-btn" onclick="deleteNote(${note.id})">
-        Delete
+        🗑 Delete
       </button>
     `;
 
@@ -21,9 +22,10 @@ async function loadNotes() {
   });
 }
 
+
 async function addNote() {
-  const title = document.getElementById("title").value;
-  const content = document.getElementById("content").value;
+  const title = document.getElementById("title").value.trim();
+  const content = document.getElementById("content").value.trim();
 
   if (!title || !content) {
     alert("Please enter title and content");
@@ -35,7 +37,10 @@ async function addNote() {
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ title, content })
+    body: JSON.stringify({
+      title,
+      content
+    })
   });
 
   document.getElementById("title").value = "";
@@ -44,6 +49,7 @@ async function addNote() {
   loadNotes();
 }
 
+
 async function deleteNote(id) {
   await fetch(`/notes/${id}`, {
     method: "DELETE"
@@ -51,5 +57,6 @@ async function deleteNote(id) {
 
   loadNotes();
 }
+
 
 loadNotes();
